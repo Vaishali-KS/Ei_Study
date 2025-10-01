@@ -1,142 +1,141 @@
-README.md
-# Placement Exercises Repository
+## **Exercise 1: Design Patterns – Console App**
 
-This repository contains **two placement exercises** developed in Java, designed for placement rounds and practical demonstrations of OOP concepts, user interaction, and design patterns.
+**Description:**  
+This console application demonstrates **6 real-time use cases** of **Behavioral, Creational, and Structural design patterns**. The program is **interactive** and takes **user input** to perform different actions.
+
+### **Use Cases & Behavior**
+
+**1. Observer Pattern – Stock Market Ticker**  
+- Users subscribe to stock updates.  
+- Whenever a stock price changes, all subscribers are notified automatically.  
+
+**Sample Output:**
+Subscribe to stock: AAPL
+Subscribe to stock: TSLA
+Update AAPL price to 150
+Notification for AAPL: New price = 150
+Update TSLA price to 720
+Notification for TSLA: New price = 720
+
+markdown
+Copy code
+
+**2. Strategy Pattern – Route Finder**  
+- User inputs **source** and **destination**.  
+- Chooses strategy: Shortest, Fastest, or Scenic route.  
+
+**Sample Output:**
+Enter source: Home
+Enter destination: Office
+Choose route strategy: 1) Shortest 2) Fastest 3) Scenic
+Enter choice: 2
+Fastest route from Home to Office: Home -> Highway -> Office
+
+markdown
+Copy code
+
+**3. Factory Pattern – Vehicle Rental Service**  
+- User selects vehicle type (**Car/Bike/Truck**).  
+- Factory returns appropriate vehicle object with details.  
+
+**Sample Output:**
+Choose vehicle type to rent: Car
+Vehicle created: Car [Seats=4, Fuel=Petrol]
+
+markdown
+Copy code
+
+**4. Builder Pattern – Computer Assembly**  
+- User selects type of computer: Gaming or Office.  
+- Builder assembles CPU, RAM, Storage automatically.  
+
+**Sample Output:**
+Build Gaming Computer
+Your Gaming Computer: CPU=Intel i9, RAM=32GB, Storage=1TB SSD
+Build Office Computer
+Your Office Computer: CPU=Intel i5, RAM=16GB, Storage=512GB SSD
+
+vbnet
+Copy code
+
+**5. Adapter Pattern – Currency Converter**  
+- Converts USD to INR using an adapter to match expected interface.  
+
+**Sample Output:**
+Enter amount in USD: 100
+Converted amount in INR: 8250
+
+markdown
+Copy code
+
+**6. Decorator Pattern – Coffee Shop**  
+- User chooses base coffee and can add **Milk, Sugar, or other toppings**.  
+- Final cost and description is displayed dynamically.  
+
+**Sample Output:**
+Base Coffee selected: Espresso
+Add Milk? yes
+Add Sugar? yes
+Final Coffee: Espresso + Milk + Sugar
+Total Price: 60
+
+markdown
+Copy code
 
 ---
 
-## **Exercise 1: Design Patterns – Console App**
+## **Exercise 2: Smart Office – Console App**
 
-This exercise demonstrates **6 real-time use cases** of **Behavioral, Creational, and Structural design patterns**. All examples are **interactive** and take input from the user.
+**Description:**  
+Simulates a **Smart Office environment**. The console app allows **room booking, occupancy detection**, and **automation** using **Singleton, Observer, and Command patterns**. Users can configure rooms, book, cancel, add occupants, and see room status.
 
-### **Use Cases**
+### **Overview**
+Console-based Smart Office simulation demonstrating:  
+- **Room configuration** and capacity management  
+- **Booking and cancellation**  
+- **Occupancy detection** via sensors (room is "occupied" when >= 2 persons)  
+- **Auto-release** of bookings if no occupancy within configured time (default 15s for testing)  
+- **Design patterns:** Singleton (**OfficeConfig**), Observer (**RoomObserver → Light/AC**), Command (**Book/Cancel/AddOccupant**)
 
-| Pattern Type | Design Pattern | Example / Scenario |
-|--------------|----------------|-----------------|
-| Behavioral | Observer Pattern | **Stock Market Ticker** – Users subscribe to stock updates; notifications sent automatically when stock prices change. |
-| Behavioral | Strategy Pattern | **Route Finder / GPS Navigation** – User inputs source & destination; selects strategy (Shortest, Fastest, Scenic). |
-| Creational | Factory Pattern | **Vehicle Rental Service** – User chooses vehicle type (Car/Bike/Truck); factory returns appropriate vehicle object. |
-| Creational | Builder Pattern | **Computer Assembly** – User selects components (CPU, RAM, Storage); builder creates computer object dynamically. |
-| Structural | Adapter Pattern | **Currency Converter** – Converts USD → INR; adapter allows incompatible interfaces to work together. |
-| Structural | Decorator Pattern | **Coffee Shop** – Base coffee decorated dynamically with Milk, Sugar, etc.; adds cost and description dynamically. |
-| Structural | Proxy Pattern (optional) | **Document Access** – Users access documents; proxy controls access and lazy-loads documents based on authorization. |
+### **Commands**
+- `config room count <n>`  
+- `config room maxcapacity <roomId> <capacity>`  
+- `block room <roomId> <HH:mm> <durationMinutes> <bookedBy>`  
+- `cancel room <roomId>`  
+- `add occupant <roomId> <count>`  
+- `status room <roomId>`  
+- `stats`  
+- `help`  
+- `exit`
 
-### **Folder Structure**
+### **Sample Output**
+config room count 3
+Total rooms configured: 3
 
+config room maxcapacity 1 5
+Room 1 max capacity set to 5
 
+block room 1 10:00 30 Alice
+Room 1 booked by Alice from 10:00 for 30 minutes
 
-Exercise1_DesignPatterns/
-├── observer/
-├── strategy/
-├── factory/
-├── builder/
-├── adapter/
-├── decorator/
-├── proxy/
-└── MainApp.java
+add occupant 1 2
+Added 2 occupants to Room 1
+Room 1 is now occupied. Lights and AC turned ON
 
+status room 1
+Room 1 Status:
+Booked by: Alice
+Occupants: 2
+Light: ON
+AC: ON
 
-### **How to Run**
+cancel room 1
+Room 1 booking canceled
+Lights and AC turned OFF
 
-1. Open terminal or IDE.
-2. Navigate to `Exercise1_DesignPatterns`.
-3. Compile and run:
+pgsql
+Copy code
 
-```bash
-javac */*.java MainApp.java
-java MainApp
-
-
-
-Exercise 2: Smart Office – Console App (Java)
-
-A console-based Smart Office simulation demonstrating room management, occupancy detection, and automation.
-
-Features
-
-Room configuration and capacity management
-
-Booking and cancellation of rooms
-
-Occupancy detection via sensors (room is "occupied" when ≥ 2 persons)
-
-Auto-release of bookings if no occupancy within configured time (default 15s for testing)
-
-Uses design patterns:
-
-Singleton (OfficeConfig)
-
-Observer (RoomObserver -> Light/AC)
-
-Command (BookRoomCommand, CancelRoomCommand, AddOccupantCommand)
-
-Folder Structure
-smart-office/
- ├─ pom.xml
- └─ src/
-    ├─ main/
-    │  ├─ java/
-    │  │  └─ com/example/smartoffice/
-    │  │     ├─ app/
-    │  │     │  └─ ConsoleAppRunner.java
-    │  │     ├─ config/
-    │  │     │  └─ OfficeConfig.java
-    │  │     ├─ model/
-    │  │     │  ├─ Room.java
-    │  │     │  ├─ Booking.java
-    │  │     │  └─ User.java
-    │  │     ├─ repository/
-    │  │     │  ├─ RoomRepository.java
-    │  │     │  └─ BookingRepository.java
-    │  │     ├─ service/
-    │  │     │  ├─ BookingService.java
-    │  │     │  └─ RoomService.java
-    │  │     ├─ command/
-    │  │     │  ├─ Command.java
-    │  │     │  ├─ BookRoomCommand.java
-    │  │     │  ├─ CancelRoomCommand.java
-    │  │     │  └─ CommandManager.java
-    │  │     ├─ observer/
-    │  │     │  ├─ RoomSubject.java
-    │  │     │  ├─ OccupancySensor.java
-    │  │     │  ├─ LightController.java
-    │  │     │  └─ ACController.java
-    │  │     ├─ scheduler/
-    │  │     │  └─ AutoReleaseScheduler.java
-    │  │     ├─ util/
-    │  │     │  └─ TimeUtils.java
-    │  │     └─ exceptions/
-    │  │        └─ (custom exceptions)
-    │  └─ resources/
-    └─ test/
-       └─ java/ (unit tests)
-
-Build & Run
-
-Requires JDK 17 and Maven.
-
-Build:
-
-mvn clean package
-
-
-Run (from project root):
-
-mvn exec:java -Dexec.mainClass="com.example.smartoffice.app.ConsoleAppRunner"
-
-Commands
-Command	Description
-config room count <n>	Configure total number of rooms
-config room maxcapacity <roomId> <capacity>	Set max capacity for a room
-block room <roomId> <HH:mm> <durationMinutes> <bookedBy>	Book a room
-cancel room <roomId>	Cancel room booking
-add occupant <roomId> <count>	Add occupants to a room
-status room <roomId>	Check room status
-stats	Show overall statistics
-help	Show available commands
-exit	Exit the application
-Repository Structure
-PlacementExercises/
- ├── Exercise1_DesignPatterns/
- └── Exercise2_SmartOffice/
-
+**Note:**  
+- **Auto-release:** If a booked room has no occupancy within 15 seconds (for testing), the booking is canceled automatically.  
+- Interactive commands include: **block room, cancel room, add occupant, status room, stats, help, 
