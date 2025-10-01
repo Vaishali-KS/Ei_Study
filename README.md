@@ -100,32 +100,32 @@ Total Price: 60
 **Overview:**
 A **console-based Smart Office simulation** for managing conference rooms, occupancy detection, and automated control of lights and AC. Uses **Singleton, Observer, and Command patterns**.
 
-**Features**
+**Key Features :**
 
-* **Office Configuration**: Configure number and names of conference rooms. **Singleton** ensures a single configuration instance.
-* **Room Booking & Cancellation**: Book and cancel conference room reservations. Automatically release unoccupied rooms after a set time.
-* **Occupancy Detection**: Detect room occupancy using sensors. Observers (**lights, AC**) are notified to turn on/off.
-* **Automated Control**: Lights and air conditioning automatically respond to occupancy.
+* `Office Setup`: Easily configure the number of conference rooms and assign names. The Singleton pattern guarantees only one configuration instance exists.
+* `Room Reservation & Cancellation`: Book or cancel rooms with real-time updates. The system can automatically release rooms that remain unoccupied beyond a predefined duration.
+* `Occupancy Monitoring`: Tracks room occupancy using sensors. Observers, such as lights and AC systems, are notified immediately when occupancy changes.
+* `Automated Environment Control`: Lights and air conditioning respond automatically based on occupancy, enhancing energy efficiency and comfort.
 
-**Design Patterns Used**
+**Applied Design Patterns:**
 
-* **Singleton Pattern**: Single instance of office configuration.
-* **Observer Pattern**: Rooms notify observers (**lights, AC**) about occupancy changes.
-* **Command Pattern**: Encapsulates booking, cancellation, and updates as commands, improving flexibility.
+* `Singleton`: Ensures a single, centralized configuration for the office environment.
+* `Observer`: Enables rooms to notify associated systems (lights, AC) whenever occupancy changes.
+* `Command`: Encapsulates room operations (booking, cancellation, updates) into independent commands, promoting maintainability and flexibility.
 
 **Class Descriptions**
 
-* `Observer.java`: Observer interface with update() method
-* `Sensor.java`: Implements Observer for occupancy sensors
-* `ControlSystem.java`: Implements Observer for lights and AC
-* `Room.java`: Represents a room, manages bookings, occupancy, and notifies observers
-* `SmartOffice.java`: Singleton class managing office configuration and operations
-* `Command.java`: Interface with execute() method
-* `ConfigureRoomsCommand.java`: Command to configure rooms
-* `SetRoomCapacityCommand.java`: Command to set room capacity
-* `BookRoomCommand.java`: Command to book a room
-* `CancelBookingCommand.java`: Command to cancel a room booking
-* `AddOccupantsCommand.java`: Command to add occupants to a room
+* `Observer.java` – Defines the Observer interface with the update() method.
+* `ControlSystem.java` – Represents controllable systems (lights, AC) that react to room status changes.
+* `Sensor.java` – Implements the Observer interface to monitor room occupancy.
+* `Room.java` – Represents a conference room, managing bookings, occupancy, and observer notifications.
+* `SmartOffice.java` – Singleton class managing overall office setup and operations.
+* `Command.java` – Base interface for command classes with the execute() method.
+* `ConfigureRoomsCommand.java` – Handles creation and setup of conference rooms.
+* `SetRoomCapacityCommand.java` – Assigns maximum capacity to each room.
+* `BookRoomCommand.java` – Processes room booking requests.
+* `AddOccupantsCommand.java` – Adds occupants to a room while updating observers automatically.
+* `CancelBookingCommand.java` – Handles booking cancellations.
 
 **Commands**
 
@@ -167,7 +167,7 @@ A **console-based Smart Office simulation** for managing conference rooms, occup
 
 **Note:**
 
-* **Auto-release:** Unoccupied rooms are automatically canceled after a set time (default 15s for testing).
+* **Auto-release:** Unoccupied rooms are automatically canceled after a set time (default 300s for testing).
 * Interactive commands include: block room, cancel room, add occupant, status room, stats, help, exit.
 
 ---
