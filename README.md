@@ -1,4 +1,4 @@
-# Placement Exercises Repository
+# CODING EXERCISES
 
 This repository contains **two Java console applications** demonstrating **Behavioural, Creational, and Structural Design Patterns** with **real-world, interactive examples**. Both exercises are designed with **strong OOP principles**, **user input-driven functionality**, and **well-structured code**.
 
