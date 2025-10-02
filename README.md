@@ -98,7 +98,7 @@ Total Price: 60
 
 ---
 
-## **Exercise 2: Smart Office Management System**
+## **Exercise 2: Smart Office Facility**
 
 **Overview:**
 A **console-based Smart Office simulation** for managing conference rooms, occupancy detection, and automated control of lights and AC. Uses **Singleton, Observer, and Command patterns**.
