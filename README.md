@@ -2,6 +2,9 @@
 
 This repository contains **two Java console applications** demonstrating **Behavioural, Creational, and Structural Design Patterns** with **real-world, interactive examples**. Both exercises are designed with **strong OOP principles**, **user input-driven functionality**, and **well-structured code**.
 
+* **`Name`** : Vaishali K S
+* **`Roll No`** : 224130
+* **`College`** : K L N College Of Engineering
 ---
 
 ## **Exercise 1: Design Patterns – Real-Time Use Cases**
